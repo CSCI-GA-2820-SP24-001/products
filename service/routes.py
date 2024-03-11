@@ -15,10 +15,10 @@
 ######################################################################
 
 """
-Pet Store Service
+Product Store Service
 
 This service implements a REST API that allows you to Create, Read, Update
-and Delete Pets from the inventory of pets in the PetShop
+and Delete Products from the inventory of products in the ProductShop
 """
 
 from flask import jsonify, request, url_for, abort
@@ -43,4 +43,22 @@ def index():
 #  R E S T   A P I   E N D P O I N T S
 ######################################################################
 
-# Todo: Place your REST API code here ...
+
+######################################################################
+# DELETE A PRODUCT
+######################################################################
+@app.route("/products/<int:product_id>", methods=["DELETE"])
+def delete_products(product_id):
+    """
+    Delete a Product
+
+    This endpoint will delete a Product based the id specified in the path
+    """
+    app.logger.info("Request to delete product with id: %d", product_id)
+
+    product = Product.find(product_id)
+    if product:
+        product.delete()
+
+    app.logger.info("Product with ID: %d delete complete.", product_id)
+    return "", status.HTTP_204_NO_CONTENT
