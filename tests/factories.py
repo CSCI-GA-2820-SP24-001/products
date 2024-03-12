@@ -3,6 +3,7 @@ Test Factory to make fake objects for testing
 """
 
 import factory
+from factory.fuzzy import FuzzyChoice
 from service.models import Product
 
 
@@ -18,8 +19,16 @@ class ProductFactory(factory.Factory):
     name = factory.Faker("name")
     description = factory.Faker("sentence")
     price = factory.Faker("random_number")
-    category = factory.Faker("sentence")
-    available = factory.Faker("boolean")
+    category = FuzzyChoice(
+        choices=[
+            "Electronics",
+            "Clothing",
+            "Home",
+            "Books",
+            "Toys & Games",
+            "Beauty",
+            "Sale",
+        ]
+    )
+    available = FuzzyChoice(choices=[True, False])
     image_url = factory.Faker("image_url")
-
-    # Todo: Add your other attributes here...
