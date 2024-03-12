@@ -61,12 +61,33 @@ def create_products():
     product.deserialize(request.get_json())
     product.create()
     message = product.serialize()
-    # Todo: uncomment this code when get_products is implemented
-    # location_url = url_for("get_products", product_id=product.id, _external=True)
-    location_url = "unknown"
+    location_url = url_for("get_products", product_id=product.id, _external=True)
+    # location_url = "unknown"
 
     app.logger.info("Product with ID: %d created.", product.id)
     return jsonify(message), status.HTTP_201_CREATED, {"Location": location_url}
+
+
+######################################################################
+# READ A PRODUCT
+######################################################################
+@app.route("/products/<int:product_id>", methods=["GET"])
+def get_products(product_id):
+    """
+    Retrieve a single Product
+
+    This endpoint will return a Product based on it's id
+    """
+    app.logger.info("Request for product with id: %s", product_id)
+
+    product = Product.find(product_id)
+    if not product:
+        error(
+            status.HTTP_404_NOT_FOUND, f"Product with id '{product_id}' was not found."
+        )
+
+    app.logger.info("Returning product: %s", product.name)
+    return jsonify(product.serialize()), status.HTTP_200_OK
 
 
 ######################################################################
