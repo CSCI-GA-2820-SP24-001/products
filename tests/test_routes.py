@@ -92,18 +92,18 @@ class TestYourResourceService(TestCase):
         self.assertEqual(new_product["category"], test_product.category)
         self.assertEqual(new_product["available"], test_product.available)
         self.assertEqual(new_product["image_url"], test_product.image_url)
-        
+
         # Todo: Uncomment this code when get_products is implemented
         # Check that the location header was correct
-        # response = self.client.get(location)
-        # self.assertEqual(response.status_code, status.HTTP_200_OK)
-        # new_product = response.get_json()
-        # self.assertEqual(new_product["name"], test_product.name)
-        # self.assertEqual(new_product["description"], test_product.description)
-        # self.assertEqual(new_product["price"], test_product.price)
-        # self.assertEqual(new_product["category"], test_product.category)
-        # self.assertEqual(new_product["available"], test_product.available)
-        # self.assertEqual(new_product["image_url"], test_product.image_url)
+        response = self.client.get(location)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        new_product = response.get_json()
+        self.assertEqual(new_product["name"], test_product.name)
+        self.assertEqual(new_product["description"], test_product.description)
+        self.assertEqual(new_product["price"], test_product.price)
+        self.assertEqual(new_product["category"], test_product.category)
+        self.assertEqual(new_product["available"], test_product.available)
+        self.assertEqual(new_product["image_url"], test_product.image_url)
 
     def test_delete_product(self):
         """It should Delete a Product"""
@@ -131,3 +131,11 @@ class TestYourResourceService(TestCase):
         data = response.get_json()
         logging.debug("Response data = %s", data)
         self.assertIn("was not found", data["message"])
+
+    def test_get_product_list(self):
+        """It should Get a list of Products"""
+        self._create_products(5)
+        response = self.client.get(BASE_URL)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        data = response.get_json()
+        self.assertEqual(len(data), 5)
