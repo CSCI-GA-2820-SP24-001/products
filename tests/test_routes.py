@@ -77,6 +77,16 @@ class TestYourResourceService(TestCase):
         self.assertEqual(new_product["available"], test_product.available)
         self.assertEqual(new_product["image_url"], test_product.image_url)
 
+    def test_delete_product(self):
+        """It should Delete a Product"""
+        test_product = self._create_products(1)[0]
+        response = self.client.delete(f"{BASE_URL}/{test_product.id}")
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+        self.assertEqual(len(response.data), 0)
+        # make sure they are deleted
+        response = self.client.get(f"{BASE_URL}/{test_product.id}")
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
         # Todo: Uncomment this code when get_products is implemented
         # Check that the location header was correct
         # response = self.client.get(location)
