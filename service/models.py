@@ -32,7 +32,6 @@ class Product(db.Model):
     category = db.Column(db.String(63))
     available = db.Column(db.Boolean())
     image_url = db.Column(db.String(255))
-    # Todo: Place the rest of your schema here...
 
     def __repr__(self):
         return f"<Product {self.name} id=[{self.id}]>"
@@ -138,3 +137,41 @@ class Product(db.Model):
         """
         logger.info("Processing name query for %s ...", name)
         return cls.query.filter(cls.name == name)
+
+    # def find_by_price(self, cls, price):
+    #     """Returns all Products with the given price
+
+    #     Args:
+    #         Price (int): the price of the Products you want to match
+    #     """
+    #     logger.info("Processing price query for %s ...", price)
+    #     return cls.query.filter(cls.price == price).all()
+    # todo fix this find_by_price function, then uncomment the test for this in test_models
+
+    @classmethod
+    def find_by_category(cls, category: str) -> list:
+        """Returns all of the Products in a category
+
+        :param category: the category of the Products you want to match
+        :type category: str
+
+        :return: a collection of Products in that category
+        :rtype: list
+
+        """
+        logger.info("Processing category query for %s ...", category)
+        return cls.query.filter(cls.category == category)
+
+    @classmethod
+    def find_by_availability(cls, available: bool = True) -> list:
+        """Returns all Products by their availability
+
+        :param available: True for products that are available
+        :type available: str
+
+        :return: a collection of Products that are available
+        :rtype: list
+
+        """
+        logger.info("Processing available query for %s ...", available)
+        return cls.query.filter(cls.available == available)
