@@ -1,7 +1,7 @@
 """
 TestProduct API Service Test Suite
 """
-
+# pylint disable=fixme
 import os
 import logging
 from unittest import TestCase
