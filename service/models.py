@@ -3,7 +3,7 @@ Models for Product
 
 All of the models are stored in this module
 """
-
+# pylint disable=fixme
 import logging
 from flask_sqlalchemy import SQLAlchemy
 
