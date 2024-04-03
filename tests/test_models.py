@@ -1,7 +1,7 @@
 """
 Test cases for Product Model
 """
-
+# pylint disable=fixme
 import os
 import logging
 from unittest import TestCase
