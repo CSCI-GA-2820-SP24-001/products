@@ -146,7 +146,7 @@ class Product(db.Model):
     #     """
     #     logger.info("Processing price query for %s ...", price)
     #     return cls.query.filter(cls.price == price).all()
-    # todo fix this find_by_price function, then uncomment the test for this in test_models
+    # todo fix this find_by_price function, then uncomment the test for this in test_models # pylint: disable=fixme
 
     @classmethod
     def find_by_category(cls, category: str) -> list:
