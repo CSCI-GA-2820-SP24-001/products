@@ -22,6 +22,7 @@ BASE_URL = "/products"
 #  T E S T   C A S E S
 ######################################################################
 # pylint: disable=too-many-public-methods
+# pylint: disable=duplicate-code
 class TestYourResourceService(TestCase):
     """REST API Server Tests"""
 
@@ -157,7 +158,7 @@ class TestYourResourceService(TestCase):
         updated_product = response.get_json()
         self.assertEqual(updated_product["category"], "unknown")
 
-    # Todo work on querying products by CATEGORY
+    # Todo work on querying products by CATEGORY # pylint: disable=fixme
     #    def test_query_product_list_by_category(self):
     #     """It should Query Products by category"""
     #     products = self._create_category(10)
@@ -179,7 +180,7 @@ class TestYourResourceService(TestCase):
     #  T E S T   A C T I O N S
     ######################################################################
 
-    # todo work on purchase and purchase not available in next sprint
+    # todo work on purchase and purchase not available in next sprint # pylint: disable=fixme
     # def test_purchase_a_product(self):
     #     """It should Purchase a Product"""
     #     products = self._create_products(10)
