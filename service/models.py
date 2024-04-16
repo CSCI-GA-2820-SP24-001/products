@@ -18,9 +18,7 @@ class DataValidationError(Exception):
 
 
 class Product(db.Model):  # pylint: disable=too-many-instance-attributes
-    """
-    Class that represents a Product
-    """
+    """Class that represents a Product"""
 
     ##################################################
     # Table Schema
