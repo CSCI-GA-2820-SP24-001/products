@@ -5,11 +5,11 @@ Feature: The product service back-end
 
 Background:
     Given the following products
-        | name       | category | available | description    | price   | image_url
-        | X          | X        | True      | X              | X       | X
-        | X          | X        | True      | X              | X       | X
-        | X          | X        | False     | X              | X       | X
-        | X          | X        | True      | X              | X       | 
+        | name       | category | available | description    | price   | image_url   |
+        | X          | X        | True      | X              | X       | X           |
+        | X          | X        | True      | X              | X       | X           |
+        | X          | X        | False     | X              | X       | X           |
+        | X          | X        | True      | X              | X       | X           |
 
 Scenario: The server is running
     When I visit the "Home Page"

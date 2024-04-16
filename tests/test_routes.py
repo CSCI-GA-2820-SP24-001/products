@@ -158,7 +158,7 @@ class TestYourResourceService(TestCase):
         updated_product = response.get_json()
         self.assertEqual(updated_product["category"], "unknown")
 
-    # Todo work on querying products by CATEGORY # pylint: disable=fixme
+    #    work on querying products by CATEGORY # pylint: disable=fixme
     #    def test_query_product_list_by_category(self):
     #     """It should Query Products by category"""
     #     products = self._create_category(10)
