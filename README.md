@@ -1,10 +1,10 @@
-# NYU DevOps Product Team ReadMe SD
+# NYU DevOps Product Team ReadMe
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Python](https://img.shields.io/badge/Language-Python-blue.svg)](https://python.org/)
 [![Build Status](https://github.com/CSCI-GA-2820-SP24-001/products/actions/workflows/ci.yml/badge.svg)](https://github.com/CSCI-GA-2820-SP24-001/products/actions)
 
-This ReadMe file is meant to guide our fellow classmates through the Product microservice. This application is currently under construction. Lead architects include Jaime Tsao, Nick Labun, Elizabeth Davis, and Scott Dunleavy. #DevOpsIsCulture #Products
+This ReadMe file is meant to guide our fellow classmates through the Product microservice. This application is currently under construction. Lead architects include Jaime Tsao, Nick Labun, Elizabeth Davis, and Scott Dunleavy. #DevOpsIsCulture #Products #NowYouCanLikeAProduct
 
 ![Dab](https://media2.giphy.com/media/lae7QSMFxEkkE/200w.gif?cid=6c09b952the10ajrvs3oazxu8lt7r0ehd7xu1zmpfjroi9s9&ep=v1_gifs_search&rid=200w.gif&ct=g)
 

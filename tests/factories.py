@@ -32,3 +32,4 @@ class ProductFactory(factory.Factory):
     )
     available = FuzzyChoice(choices=[True, False])
     image_url = factory.Faker("image_url")
+    like = factory.Sequence(lambda n: n)

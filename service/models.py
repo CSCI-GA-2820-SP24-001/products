@@ -32,6 +32,7 @@ class Product(db.Model):
     category = db.Column(db.String(63))
     available = db.Column(db.Boolean())
     image_url = db.Column(db.String(255))
+    like = db.Column(db.Integer, nullable=False, default=0)
 
     def __repr__(self):
         return f"<Product {self.name} id=[{self.id}]>"
@@ -83,6 +84,7 @@ class Product(db.Model):
             "category": self.category,
             "available": self.available,
             "image_url": self.image_url,
+            "like": self.like,
         }
 
     def deserialize(self, data):
@@ -99,6 +101,8 @@ class Product(db.Model):
             self.category = data["category"]
             self.available = data["available"]
             self.image_url = data["image_url"]
+            self.like = data["like"]
+
         except AttributeError as error:
             raise DataValidationError("Invalid attribute: " + error.args[0]) from error
         except KeyError as error:
