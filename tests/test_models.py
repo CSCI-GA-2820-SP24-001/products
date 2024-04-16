@@ -19,6 +19,7 @@ DATABASE_URI = os.getenv(
 #  P R O D U C T   M O D E L   T E S T   C A S E S
 ######################################################################
 # pylint: disable=too-many-public-methods
+# pylint: disable=duplicate-code
 class TestCaseBase(TestCase):
     """Base Test Case for Common Setup"""
 
@@ -309,4 +310,4 @@ class TestModelQueries(TestCaseBase):
     #     self.assertEqual(found.count(), count)
     #     for product in found:
     #         self.assertEqual(product.price, price)
-    # todo add/fix a 'def find_by_price' function to models.py before uncommmenting this
+    # todo add/fix a 'def find_by_price' function to models.py before uncommmenting this # pylint: disable=fixme
