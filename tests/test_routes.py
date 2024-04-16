@@ -158,7 +158,6 @@ class TestYourResourceService(TestCase):
         updated_product = response.get_json()
         self.assertEqual(updated_product["category"], "unknown")
 
-
     def test_like_product(self):
         """It should Like an existing Product"""
         # create a product to like
