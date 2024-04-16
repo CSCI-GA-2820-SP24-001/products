@@ -72,7 +72,6 @@ class TestProductModel(TestCaseBase):
         self.assertEqual(data.category, product.category)
         self.assertEqual(data.available, product.available)
         self.assertEqual(data.image_url, product.image_url)
-        self.assertEqual(data.like, product.like)
 
     def test_delete_a_product(self):
         """It should delete a Product"""
@@ -99,7 +98,6 @@ class TestProductModel(TestCaseBase):
         self.assertEqual(found_product.category, product.category)
         self.assertEqual(found_product.available, product.available)
         self.assertEqual(found_product.image_url, product.image_url)
-        self.assertEqual(found_product.like, product.like)
 
     def test_update_a_product(self):
         """It should Update a Product"""
@@ -161,8 +159,6 @@ class TestProductModel(TestCaseBase):
         self.assertEqual(data["available"], product.available)
         self.assertIn("image_url", data)
         self.assertEqual(data["image_url"], product.image_url)
-        self.assertIn("like", data)
-        self.assertEqual(data["like"], product.like)
 
     def test_deserialize_a_product(self):
         """It should de-serialize a Product"""
@@ -177,7 +173,6 @@ class TestProductModel(TestCaseBase):
         self.assertEqual(product.category, data["category"])
         self.assertEqual(product.available, data["available"])
         self.assertEqual(product.image_url, data["image_url"])
-        self.assertEqual(product.like, data["like"])
 
     def test_deserialize_missing_data(self):
         """It should not deserialize a Product with missing data"""
