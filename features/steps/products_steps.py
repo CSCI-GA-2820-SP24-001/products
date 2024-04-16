@@ -49,8 +49,9 @@ def step_impl(context):
             "name": row["name"],
             "category": row["category"],
             "available": row["available"] in ["True", "true", "1"],
-            "gender": row["gender"],
-            "birthday": row["birthday"],
+            "description": row["description"],
+            "price": row["price"],
+            "image_url": row["image_url"],
         }
         context.resp = requests.post(rest_endpoint, json=payload)
         assert context.resp.status_code == HTTP_201_CREATED
