@@ -5,11 +5,11 @@ Feature: The product service back-end
 
 Background:
     Given the following products
-        | id| name            | category    | available | description           | price   | image_url |
-        | 1 | Apple iPhone 13 | Smart Phones| True      | Used Apple iPhone 13  | "100"     | https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pink-select-2021?wid=940&hei=1112&fmt=png-alpha&.v=1645572315935 |
-        | 2 | Fujifilm Camera | Cameras     | True      | Used 1986 Fuji Camera | "85"      | https://i.ebayimg.com/images/g/y1sAAOSwHvhmBVoA/s-l1600.webp |
-        | 3 | Garmin Watch    | Watches     | False     | New Garmin Smartwatch | "100"     | https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.com%2FGarmin-v%25C3%25ADvoactive-Fitness-Smartwatch-Display%2Fdp%2FB0CG6NR413&psig=AOvVaw21tLR5bnTSwZJwxsKZW9p5&ust=1713378377872000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCMiN8P6tx4UDFQAAAAAdAAAAABAe |
-        | 4 | Bose Headphones | Headphones  | True      | New Bose Headphones   | "120"     | https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.com%2FBose-QuietComfort-Cancelling-Headphones-Bluetooth%2Fdp%2FB0CCZ26B5V&psig=AOvVaw3LJzcHlhkF7gXJm7et9PkH&ust=1713378407670000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCPD9uIyux4UDFQAAAAAdAAAAABAE |
+        | id  | name            | category    | available | description           | price     | image_url |
+        | "1" | Apple iPhone 13 | Smart Phones| True      | Used Apple iPhone 13  | "100"     | https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pink-select-2021?wid=940&hei=1112&fmt=png-alpha&.v=1645572315935 |
+        | "2" | Fujifilm Camera | Cameras     | True      | Used 1986 Fuji Camera | "85"      | https://i.ebayimg.com/images/g/y1sAAOSwHvhmBVoA/s-l1600.webp |
+        | "3" | Garmin Watch    | Watches     | False     | New Garmin Smartwatch | "100"     | https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.com%2FGarmin-v%25C3%25ADvoactive-Fitness-Smartwatch-Display%2Fdp%2FB0CG6NR413&psig=AOvVaw21tLR5bnTSwZJwxsKZW9p5&ust=1713378377872000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCMiN8P6tx4UDFQAAAAAdAAAAABAe |
+        | "4" | Bose Headphones | Headphones  | True      | New Bose Headphones   | "120"     | https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.com%2FBose-QuietComfort-Cancelling-Headphones-Bluetooth%2Fdp%2FB0CCZ26B5V&psig=AOvVaw3LJzcHlhkF7gXJm7et9PkH&ust=1713378407670000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCPD9uIyux4UDFQAAAAAdAAAAABAE |
 
 Scenario: The server is running
     When I visit the "Home Page"
