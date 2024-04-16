@@ -158,7 +158,25 @@ class TestYourResourceService(TestCase):
         updated_product = response.get_json()
         self.assertEqual(updated_product["category"], "unknown")
 
-    #    work on querying products by CATEGORY # pylint: disable=fixme
+    def test_like_product(self):
+        """It should Like an existing Product"""
+        # create a product to like
+        test_product = ProductFactory()
+        response = self.client.post(BASE_URL, json=test_product.serialize())
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+        # like the product
+        new_product = response.get_json()
+        logging.debug(new_product)
+        old_like = new_product["like"]
+        response = self.client.put(
+            f"{BASE_URL}/like/{new_product['id']}", json=new_product
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        updated_product = response.get_json()
+        self.assertEqual(updated_product["like"], old_like + 1)
+
+    # Todo work on querying products by CATEGORY # pylint: disable=fixme
     #    def test_query_product_list_by_category(self):
     #     """It should Query Products by category"""
     #     products = self._create_category(10)
