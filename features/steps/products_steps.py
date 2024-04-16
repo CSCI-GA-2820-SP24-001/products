@@ -46,6 +46,7 @@ def step_impl(context):
     # load the database with new products
     for row in context.table:
         payload = {
+            "id": row["id"],
             "name": row["name"],
             "category": row["category"],
             "available": row["available"] in ["True", "true", "1"],
