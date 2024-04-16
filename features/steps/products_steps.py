@@ -56,3 +56,11 @@ def step_impl(context):
         }
         context.resp = requests.post(rest_endpoint, json=payload)
         assert context.resp.status_code == HTTP_201_CREATED
+
+    print("Response Status Code:", context.resp.status_code)
+    print(
+        "Response Body:", context.resp.text
+    )  # Adjust according to how your response body can be accessed
+    assert (
+        context.resp.status_code == HTTP_201_CREATED
+    ), f"Expected 201, got {context.resp.status_code}"
