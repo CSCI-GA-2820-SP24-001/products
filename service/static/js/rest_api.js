@@ -16,6 +16,7 @@ $(function () {
         }
         $("#product_description").val(res.description);
         $("#product_price").val(res.price);
+        $("#product_image_url").val(res.image_url);
     }
 
     /// Clears all form fields
@@ -25,6 +26,7 @@ $(function () {
         $("#product_available").val("");
         $("#product_description").val("");
         $("#product_price").val("");
+        $("#product_image_url").val("");
     }
 
     // Updates the flash message area
@@ -44,13 +46,15 @@ $(function () {
         let available = $("#product_available").val() == "true";
         let description = $("#product_description").val();
         let price = $("#product_price").val();
+        let image_url = $("#image_url").val();
 
         let data = {
             "name": name,
             "category": category,
             "available": available,
             "description": description,
-            "price": price
+            "price": price,
+            "image_url": image_url
         };
 
         $("#flash_message").empty();
@@ -85,13 +89,15 @@ $(function () {
         let available = $("#product_available").val() == "true";
         let description = $("#product_description").val();
         let price = $("#product_price").val();
+        let image_url = $("product_image_url").val();
 
         let data = {
             "name": name,
             "category": category,
             "available": available,
             "description": description,
-            "price": price
+            "price": price,
+            "image_url": image_url
         };
 
         $("#flash_message").empty();
@@ -229,15 +235,16 @@ $(function () {
             table += '<th class="col-md-2">Name</th>'
             table += '<th class="col-md-2">Category</th>'
             table += '<th class="col-md-2">Available</th>'
-            table += '<th class="col-md-2">Gender</th>'
-            table += '<th class="col-md-2">Birthday</th>'
+            table += '<th class="col-md-2">Description</th>'
+            table += '<th class="col-md-2">Price</th>'
+            table += '<th class="col-md-2">Image_URL</th>'
             table += '</tr></thead><tbody>'
             let firstProduct = "";
             for(let i = 0; i < res.length; i++) {
                 let product = res[i];
-                table +=  `<tr id="row_${i}"><td>${product.id}</td><td>${product.name}</td><td>${product.category}</td><td>${product.available}</td><td>${pet.description}</td><td>${pet.price}</td></tr>`;
+                table +=  `<tr id="row_${i}"><td>${product.id}</td><td>${product.name}</td><td>${product.category}</td><td>${product.available}</td><td>${product.description}</td><td>${product.price}</td><td>${product.image_url}</td></tr>`;
                 if (i == 0) {
-                    firstProduct = pet;
+                    firstProduct = product;
                 }
             }
             table += '</tbody></table>';
