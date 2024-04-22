@@ -17,8 +17,7 @@ class DataValidationError(Exception):
     """Used for an data validation errors when deserializing"""
 
 
-# pylint: disable=too-many-instance-attributes
-class Product(db.Model):
+class Product(db.Model):  # pylint: disable=too-many-instance-attributes
     """
     Class that represents a Product
     """
@@ -112,8 +111,7 @@ class Product(db.Model):
             ) from error
         except TypeError as error:
             raise DataValidationError(
-                "Invalid Product: body of request contained bad or no data "
-                + str(error)
+                "Invalid Product: body of request contained bad or no data" + str(error)
             ) from error
         return self
 

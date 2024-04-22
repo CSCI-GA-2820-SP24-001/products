@@ -30,13 +30,28 @@ from service.common import status  # HTTP Status Codes
 ######################################################################
 # GET INDEX
 ######################################################################
+# @app.route("/")
+# def index():
+#     """Root URL response"""
+#     return (
+#         "Welcome to the Products Team! Try adding /products to the end of this URL to explore.",
+#         status.HTTP_200_OK,
+#     )
+
+
 @app.route("/")
 def index():
-    """Root URL response"""
-    return (
-        "Welcome to the Products Team! Try adding /products to the end of this URL to explore.",
-        status.HTTP_200_OK,
-    )
+    """Base URL for our service"""
+    return app.send_static_file("index.html")
+
+
+######################################################################
+# GET HEALTH CHECK
+######################################################################
+@app.route("/health")
+def health_check():
+    """Let them know our heart is still beating"""
+    return jsonify(status=200, message="Healthy"), status.HTTP_200_OK
 
 
 ######################################################################
