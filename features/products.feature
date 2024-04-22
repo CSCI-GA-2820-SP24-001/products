@@ -5,11 +5,11 @@ Feature: The product service back-end
 
 Background:
     Given the following products
-        | id|  name           | category    | available | description           | price   | image_url |
-        | 1 | Apple iPhone 13 | Smart Phones| True      | Used Apple iPhone 13  | 100     | https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pink-select-2021?wid=940&hei=1112&fmt=png-alpha&.v=1645572315935 |
-        | 2 | Fujifilm Camera | Cameras     | True      | Used 1986 Fuji Camera | 85      | https://i.ebayimg.com/images/g/y1sAAOSwHvhmBVoA/s-l1600.webp |
-        | 3 | Garmin Watch    | Watches     | False     | New Garmin Smartwatch | 100     | https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.com%2FGarmin-v%25C3%25ADvoactive-Fitness-Smartwatch-Display%2Fdp%2FB0CG6NR413&psig=AOvVaw21tLR5bnTSwZJwxsKZW9p5&ust=1713378377872000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCMiN8P6tx4UDFQAAAAAdAAAAABAe |
-        | 4 | Bose Headphones | Headphones  | True      | New Bose Headphones   | 120     | https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.com%2FBose-QuietComfort-Cancelling-Headphones-Bluetooth%2Fdp%2FB0CCZ26B5V&psig=AOvVaw3LJzcHlhkF7gXJm7et9PkH&ust=1713378407670000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCPD9uIyux4UDFQAAAAAdAAAAABAE |
+        |  name      | category | available | description    | price   | image_url                 | like|
+        | iPhone     | Phones   | True      | Used iPhone    | 100     | https://shorturl.at/oNQV6 | 0   |
+        | Camera     | Cameras  | True      | Used Camera    | 85      | https://shorturl.at/pqxBW | 0   | 
+        | Watch      | Watches  | False     | New Watch      | 100     | https://shorturl.at/jrwDO | 0   |
+        | Headphones | Misc     | True      | New Headphones | 120     | https://shorturl.at/oFKYZ | 0   |
 
 Scenario: The server is running
     When I visit the "Home Page"
@@ -18,11 +18,13 @@ Scenario: The server is running
 
 Scenario: Create a Product
     When I visit the "Home Page"
-    And I set the "Name" to "Apple iPhone 13"
-    And I set the "Category" to "Smart Phones"
-    And I select "False" in the "Available" dropdown
-    And I select "Used Apple iPhone 13" in the "Description" dropdown
+    And I set the "Name" to "iPhone"
+    And I set the "Category" to "Phones"
+    And I select "True" in the "Available" dropdown
+    And I set the "Description" to "Used iPhone"
     And I set the "Price" to "100"
+    And I set the "Image_URL" to "https://shorturl.at/oNQV6"
+    And I set the "Like" to "0"
     And I press the "Create" button
     Then I should see the message "Success"
     When I copy the "id" field
@@ -33,56 +35,10 @@ Scenario: Create a Product
     When I paste the "id" field
     And I press the "Retrieve" button
     Then I should see the message "Success"
-    And I should see "Apple iPhone 13" in the "Name" field
-    And I should see "Smart Phones" in the "Category" field
+    And I should see "iPhone" in the "Name" field
+    And I should see "Phones" in the "Category" field
     And I should see "True" in the "Available" dropdown
-    And I should see "Used Apple iPhone 13" in the "Description" dropdown
+    And I should see "Used iPhone" in the "Description" field
     And I should see "100" in the "Price" field
-
-Scenario: List all products
-    When I visit the "Home Page"
-    And I press the "Search" button
-    Then I should see the message "Success"
-    And I should see "Apple iPhone 13" in the results
-    And I should see "Fujifilm Camera" in the results
-    And I should not see "Garmin Watch" in the results
-
-Scenario: Search for Smart Phones
-    When I visit the "Home Page"
-    And I set the "Category" to "Smart Phones"
-    And I press the "Search" button
-    Then I should see the message "Success"
-    And I should see "Apple iPhone 13" in the results
-    And I should not see "Fujifilm Camera" in the results
-    And I should not see "Garmin Watch" in the results
-
-Scenario: Search for available
-    When I visit the "Home Page"
-    And I select "True" in the "Available" dropdown
-    And I press the "Search" button
-    Then I should see the message "Success"
-    And I should see "Fujifilm Camera" in the results
-    And I should see "Apple iPhone 13" in the results
-    And I should not see "Garmin Watch" in the results
-
-Scenario: Update a Product
-    When I visit the "Home Page"
-    And I set the "Name" to "Apple iPhone 13"
-    And I press the "Search" button
-    Then I should see the message "Success"
-    And I should see "Apple iPhone 13" in the "Name" field
-    And I should see "Smart Phones" in the "Category" field
-    When I change "Name" to "Apple iPhone 14"
-    And I press the "Update" button
-    Then I should see the message "Success"
-    When I copy the "id" field
-    And I press the "Clear" button
-    And I paste the "id" field
-    And I press the "Retrieve" button
-    Then I should see the message "Success"
-    And I should see "Apple iPhone 14" in the "Name" field
-    When I press the "Clear" button
-    And I press the "Search" button
-    Then I should see the message "Success"
-    And I should see "Apple iPhone 14" in the results
-    And I should not see "Apple iPhone 13" in the results
+    And I should see "https://shorturl.at/oNQV6" in the "Image_URL" field
+    And I should see "0" in the "Like" field

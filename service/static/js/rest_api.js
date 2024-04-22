@@ -17,6 +17,7 @@ $(function () {
         $("#product_description").val(res.description);
         $("#product_price").val(res.price);
         $("#product_image_url").val(res.image_url);
+        $("#product_like").val(res.like);
     }
 
     /// Clears all form fields
@@ -27,6 +28,7 @@ $(function () {
         $("#product_description").val("");
         $("#product_price").val("");
         $("#product_image_url").val("");
+        $("#product_like").val("");
     }
 
     // Updates the flash message area
@@ -46,7 +48,8 @@ $(function () {
         let available = $("#product_available").val() == "true";
         let description = $("#product_description").val();
         let price = $("#product_price").val();
-        let image_url = $("#image_url").val();
+        let image_url = $("#product_image_url").val();
+        let like = $("#product_like").val();
 
         let data = {
             "name": name,
@@ -54,7 +57,8 @@ $(function () {
             "available": available,
             "description": description,
             "price": price,
-            "image_url": image_url
+            "image_url": image_url,
+            "like": like,
         };
 
         $("#flash_message").empty();
@@ -90,6 +94,7 @@ $(function () {
         let description = $("#product_description").val();
         let price = $("#product_price").val();
         let image_url = $("product_image_url").val();
+        let like = $("#product_like").val();
 
         let data = {
             "name": name,
@@ -97,7 +102,8 @@ $(function () {
             "available": available,
             "description": description,
             "price": price,
-            "image_url": image_url
+            "image_url": image_url,
+            "like": like,
         };
 
         $("#flash_message").empty();
@@ -238,11 +244,12 @@ $(function () {
             table += '<th class="col-md-2">Description</th>'
             table += '<th class="col-md-2">Price</th>'
             table += '<th class="col-md-2">Image_URL</th>'
+            table += '<th class="col-md-2">Like</th>'
             table += '</tr></thead><tbody>'
             let firstProduct = "";
             for(let i = 0; i < res.length; i++) {
                 let product = res[i];
-                table +=  `<tr id="row_${i}"><td>${product.id}</td><td>${product.name}</td><td>${product.category}</td><td>${product.available}</td><td>${product.description}</td><td>${product.price}</td><td>${product.image_url}</td></tr>`;
+                table +=  `<tr id="row_${i}"><td>${product.id}</td><td>${product.name}</td><td>${product.category}</td><td>${product.available}</td><td>${product.description}</td><td>${product.price}</td><td>${product.image_url}</td><td>${product.like}</td></tr>`;
                 if (i == 0) {
                     firstProduct = product;
                 }

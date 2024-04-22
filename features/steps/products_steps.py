@@ -25,6 +25,7 @@ For information on Waiting until elements are present in the HTML see:
 import requests
 from behave import given  # pylint: disable=no-name-in-module
 
+
 # HTTP Return Codes
 HTTP_200_OK = 200
 HTTP_201_CREATED = 201
@@ -46,13 +47,13 @@ def step_impl(context):
     # load the database with new products
     for row in context.table:
         payload = {
-            "id": int(row["id"]),
             "name": row["name"],
             "category": row["category"],
             "available": row["available"] in ["True", "true", "1"],
             "description": row["description"],
             "price": int(row["price"]),
             "image_url": row["image_url"],
+            "like": int(row["like"]),
         }
         context.resp = requests.post(rest_endpoint, json=payload)
         assert context.resp.status_code == HTTP_201_CREATED
