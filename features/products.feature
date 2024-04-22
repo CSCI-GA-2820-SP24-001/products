@@ -5,11 +5,11 @@ Feature: The product service back-end
 
 Background:
     Given the following products
-        |  name      | category | available | description    | price   | image_url                 | like|
-        | iPhone     | Phones   | True      | Used iPhone    | 100     | https://shorturl.at/oNQV6 | 0   |
-        | Camera     | Cameras  | True      | Used Camera    | 85      | https://shorturl.at/pqxBW | 0   | 
-        | Watch      | Watches  | False     | New Watch      | 100     | https://shorturl.at/jrwDO | 0   |
-        | Headphones | Misc     | True      | New Headphones | 120     | https://shorturl.at/oFKYZ | 0   |
+        |  name      | category | available | description    | price   | image_url                 | like |
+        | iPhone     | Phones   | True      | Used iPhone    | 100     | https://shorturl.at/oNQV6 | 0    |
+        | Camera     | Cameras  | True      | Used Camera    | 85      | https://shorturl.at/pqxBW | 0    | 
+        | Watch      | Watches  | False     | New Watch      | 100     | https://shorturl.at/jrwDO | 0    |
+        | Headphones | Misc     | True      | New Headphones | 120     | https://shorturl.at/oFKYZ | 0    |
 
 Scenario: The server is running
     When I visit the "Home Page"
@@ -42,3 +42,24 @@ Scenario: Create a Product
     And I should see "100" in the "Price" field
     And I should see "https://shorturl.at/oNQV6" in the "Image_URL" field
     And I should see "0" in the "Like" field
+
+Scenario: List all products
+    When I visit the "Home Page"
+    And I press the "Search" button
+    Then I should see the message "Success"
+    And I should see "iPhone" in the results
+    And I should see "Camera" in the results
+    And I should see "Watch" in the results
+    And I should see "Headphones" in the results
+
+Scenario: Delete a product
+    When I visit the "Home Page"
+    And I set the "Name" to "iPhone"
+    And I press the "Search" button
+    Then I should see the message "Success"
+    And I should see "iPhone" in the "Name" field
+    When I press the "Delete" button
+    And I press the "Clear" button
+    And I press the "Search" button
+    Then I should see the message "Success"
+    And I should not see "iPhone" in the results
