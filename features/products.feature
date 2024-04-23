@@ -63,3 +63,27 @@ Scenario: Delete a product
     And I press the "Search" button
     Then I should see the message "Success"
     And I should not see "iPhone" in the results
+
+Scenario: Update a product
+    When I visit the "Home Page"
+    And I set the "Name" to "iPhone"
+    And I press the "Search" button
+    Then I should see the message "Success"
+    And I should see "iPhone" in the "Name" field
+    And I should see "Used iPhone" in the "Description" field
+    When I change "Name" to "Android"
+    And I change "Description" to "Used Android"
+    And I press the "Update" button
+    Then I should see the message "Success"
+    When I copy the "id" field
+    And I press the "Clear" button
+    And I paste the "id" field
+    And I press the "Retrieve" button
+    Then I should see the message "Success"
+    And I should see "Android" in the "Name" field
+    And I should see "Used Android" in the "Description" field
+    When I press the "Clear" button
+    And I press the "Search" button
+    Then I should see the message "Success"
+    And I should see "Android" in the results
+    And I should not see "iPhone" in the results
