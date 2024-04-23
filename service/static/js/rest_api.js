@@ -93,7 +93,7 @@ $(function () {
         let available = $("#product_available").val() == "true";
         let description = $("#product_description").val();
         let price = $("#product_price").val();
-        let image_url = $("product_image_url").val();
+        let image_url = $("#product_image_url").val();
         let like = $("#product_like").val();
 
         let data = {
