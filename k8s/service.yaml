@@ -3,9 +3,10 @@ kind: Service
 metadata:
   name: products
 spec:
-  type: ClusterIP
   selector:
     app: products
+  type: ClusterIP
+  internalTrafficPolicy: Local
   ports:
     - name: http
       protocol: TCP
