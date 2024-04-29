@@ -1,5 +1,3 @@
-# These are custom tasks that are not on Tekton Hub
----
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
@@ -22,7 +20,7 @@ spec:
   params:
     - name: image
       description: The container image with pylint
-      default: docker.io/python:3.11-slim  
+      default: docker.io/python:3.11-slim
     - name: path
       description: The path to the module which should be analyzed by pylint
       default: "."
@@ -102,11 +100,11 @@ spec:
       image: docker.io/python:3.11-slim
       workingDir: $(workspaces.source.path)
       env:
-       - name: DATABASE_URI
-         valueFrom:
-           secretKeyRef:
-             name: $(params.SECRET_NAME)
-             key: $(params.SECRET_KEY)
+        - name: DATABASE_URI
+          valueFrom:
+            secretKeyRef:
+              name: $(params.SECRET_NAME)
+              key: $(params.SECRET_KEY)
       script: |
         #!/bin/bash
         set -e
@@ -146,22 +144,22 @@ metadata:
     tekton.dev/platforms: "linux/amd64"
 spec:
   workspaces:
-  - name: source  
+    - name: source
   description: >-
     This task will update the deployment.yaml with the latest image name
     and then apply that yaml file and it's service file.
   params:
-  - name: image_name
-    description: The fully qualified name of the new image to deploy
-    type: string
-  - name: manifest_dir
-    description: The directory in source that contains yaml manifests
-    type: string
-    default: "k8s"
+    - name: image_name
+      description: The fully qualified name of the new image to deploy
+      type: string
+    - name: manifest_dir
+      description: The directory in source that contains yaml manifests
+      type: string
+      default: "k8s"
   steps:
     - name: deploy
       image: quay.io/openshift/origin-cli:latest
-      workingDir: /workspace/source 
+      workingDir: /workspace/source
       command: ["/bin/bash", "-c"]
       args:
         - |-
@@ -209,18 +207,18 @@ metadata:
     tekton.dev/platforms: "linux/amd64"
 spec:
   workspaces:
-  - name: source  
+    - name: source
   description: >-
     This task will deploy all of the yaml files in the manifest folder.
   params:
-  - name: manifest_dir
-    description: The directory in source that contains yaml manifests
-    type: string
-    default: "k8s"
+    - name: manifest_dir
+      description: The directory in source that contains yaml manifests
+      type: string
+      default: "k8s"
   steps:
     - name: apply
       image: quay.io/openshift/origin-cli:latest
-      workingDir: /workspace/source 
+      workingDir: /workspace/source
       command: ["/bin/bash", "-c"]
       args:
         - |-
@@ -263,12 +261,12 @@ spec:
       image: rofrano/pipeline-selenium
       workingDir: $(workspaces.source.path)
       env:
-       - name: BASE_URL
-         value: $(params.BASE_URL)
-       - name: WAIT_SECONDS
-         value: $(params.WAIT_SECONDS)
-       - name: DRIVER
-         value: $(params.DRIVER)
+        - name: BASE_URL
+          value: $(params.BASE_URL)
+        - name: WAIT_SECONDS
+          value: $(params.WAIT_SECONDS)
+        - name: DRIVER
+          value: $(params.DRIVER)
       script: |
         #!/bin/bash
         set -e
