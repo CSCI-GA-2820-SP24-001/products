@@ -87,3 +87,30 @@ Scenario: Update a product
     Then I should see the message "Success"
     And I should see "Android" in the results
     And I should not see "iPhone" in the results
+
+Scenario: Clear the user interface
+    When I visit the "Home Page"
+    And I press the "Search" button
+    Then I should see the message "Success"
+    And I should see "iPhone" in the results
+    And I should see "Camera" in the results
+    And I should see "Watch" in the results
+    And I should see "Headphones" in the results
+    When I press the "Clear" button
+    Then the "id" field should be empty
+    And the "Name" field should be empty
+    And the "Category" field should be empty
+    And the "Available" field should be empty
+    And the "Description" field should be empty
+    And the "Price" field should be empty
+    And the "Image_URL" field should be empty
+    And the "Like" field should be empty
+
+Scenario: Query a specific product
+    When I visit the "Home Page"
+    And I set the "Name" to "iPhone"
+    And I press the "Search" button
+    Then I should see the message "Success"
+    And I should see "iPhone" in the "Name" field
+    And I should see "Phones" in the "Category" field
+    And I should not see "Camera" in the results
